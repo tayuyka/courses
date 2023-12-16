@@ -7,6 +7,10 @@
 
 {% block content %}
    <h1>Преподаватели</h1>
+<form method="GET" action="{% url 'view_teachers' %}" class="search">
+    <input type="text" name="q" value="{{ search_query }}" placeholder="Поиск по ФИО" class="filter">
+    <button type="submit" class="func-btn-edit">Искать</button>
+</form>
 
 {% for teacher in teachers %}
         <div class="student-info">
@@ -15,7 +19,7 @@
         Курс: {{ teacher.course }}<br>
 
         <div class="func-btns">
-            <a href="{% url 'teacher_info' teacher.id %}" class="func-btn-edit" ><i class="gg-eye-alt"></i></a>
+            <a href="{% url 'teacher_info' teacher.id %}" class="func-btn-info" ><i class="gg-eye-alt"></i></a>
 
         </div>
 

@@ -6,7 +6,10 @@
 
 {% block content %}
    <h1>Курсы</h1>
-
+<form method="GET" action="{% url 'view_courses' %}" class="search">
+    <input type="text" name="q" value="{{ search_query }}" placeholder="Поиск по названию" class="filter">
+    <button type="submit" class="func-btn-edit">Искать</button>
+</form>
 
 
 {% for course in courses %}
@@ -16,7 +19,7 @@
     Тип курса: {{ course.course_type.course_type }}<br>
 
     <div class="func-btns">
-            <a href="{% url 'course_info' course.id %}" class="func-btn-edit" >Инфо</a>
+            <a href="{% url 'course_info' course.id %}" class="func-btn-info" ><i class="gg-eye-alt"></i></a>
 
 
     </div>

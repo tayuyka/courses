@@ -11,15 +11,18 @@
 </form>
 
 {% for student in students %}
-<div class="centered-bar"></div>
     <div class="student-info">
         ФИО: {{ student.full_name|escape }}<br>
         Группы: {{ student.group.all|join:"; "|escape }}<br>
 
         <div class="func-btns-edit">
-            <a href="{% url 'student_info' student.id %}" class="func-btn-edit" >Инфо</a>
+            <a href="{% url 'student_info' student.id %}" class="func-btn-info" ><i class="gg-eye-alt"></i></a>
         </div>
+
+
     </div>
+<div class="centered-bar"></div>
+
 
 
 {% endfor %}
