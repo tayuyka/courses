@@ -32,9 +32,6 @@ def add_teacher(request):
     return render(request, 'main/add_teacher.html', {'form': form})
 
 
-# def view_students(request):
-#     students = Student.objects.all()
-#     return render(request, 'main/view_students.html', {'students': students})
 def view_students(request):
     all_students = Student.objects.all()
 
@@ -60,19 +57,37 @@ def view_students(request):
 
     context = {
         'students': students_page,
-        'search_query': search_query,  # передаем обратно в шаблон для отображения в поле поиска
+        'search_query': search_query,
     }
     return render(request, 'main/view_students.html', context)
 
 
 def view_teachers(request):
-    teachers = Teacher.objects.all()
-    return render(request, 'main/view_teachers.html', {'teachers': teachers})
+    all_teachers = Teacher.objects.all()
+    search_query = request.GET.get('q', '')
+
+    if search_query:
+        all_teachers = all_teachers.filter(full_name__icontains=search_query)
+
+    context = {
+        'teachers': all_teachers,
+        'search_query': search_query,
+    }
+    return render(request, 'main/view_teachers.html', context)
 
 
 def view_courses(request):
-    courses = Course.objects.all()
-    return render(request, 'main/view_courses.html', {'courses': courses})
+    all_courses = Course.objects.all()
+    search_query = request.GET.get('q', '')
+
+    if search_query:
+        all_courses = all_courses.filter(course_name__icontains=search_query)
+
+    context = {
+        'courses': all_courses,
+        'search_query': search_query,
+    }
+    return render(request, 'main/view_courses.html', context)
 
 
 def edit_student(request, student_id):
