@@ -1,0 +1,16 @@
+<!-- templates/main/edit_student.html -->
+
+{% extends 'main/base.html' %}
+
+{% block title %}Изменение студента{% endblock %}
+
+{% block content %}
+
+<h1>Изменение студента</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="func-btn">Сохранить изменения</button>
+</form>
+{% endblock %}

@@ -1,0 +1,81 @@
+
+{% extends 'main/base.html' %}
+
+{% block title %}Вершина знаний{% endblock %}
+{% block script %}
+
+{% endblock %}
+
+{% block content %}
+<h5>Почему мы?</h5>
+    <div class="section-1">
+        <div class="feature" id="featureBlock">
+            <div class="feature-item active">
+                <h3>Качественное Образование</h3>
+                <p>Наши курсы основаны на современных методиках обучения</p>
+
+            </div>
+            <div class="feature-item">
+                <h3>Профессиональные Преподаватели</h3>
+                <p>Эксперты в своей области готовы поделиться своим опытом с вами</p>
+
+            </div>
+            <div class="feature-item">
+                <h3>Гибкий График</h3>
+                <p>Обучение, которое подстраивается под ваш образ жизни</p>
+            </div>
+            <div class="button-container-home">
+                    <button class="btn-swap" onclick="changeFeature(-1)"><box-icon name='chevron-left' type='solid'  color='#ffffff' ></box-icon></button>
+                    <button class="btn-swap" onclick="changeFeature(1)"><box-icon name='chevron-left' type='solid' flip='horizontal' color='#ffffff' ></box-icon></box-icon></button>
+                </div>
+        </div>
+        <div class="home-img active">
+            <div class="img1h"></div>
+        </div>
+        <div class="home-img">
+            <div class="img2h"></div>
+        </div>
+        <div class="home-img">
+            <div class="img3h"></div>
+        </div>
+
+    </div>
+
+    <script>
+        let currentFeature = 0;
+        let currentImg = 0;
+        const featureItems = document.querySelectorAll('.feature-item');
+        const img = document.querySelectorAll('.home-img');
+
+        function changeFeature(direction) {
+            featureItems[currentFeature].classList.remove('active');
+            img[currentImg].classList.remove('active');
+            currentFeature = (currentFeature + direction + featureItems.length) % featureItems.length;
+            currentImg = (currentImg + direction + img.length) % img.length;
+            featureItems[currentFeature].classList.add('active');
+            img[currentImg].classList.add('active');
+        }
+    </script>
+
+    <h5>Что Мы Предлагаем?</h5>
+        <div class="section-1">
+
+            <div class="feature-1">
+                <div class="feature-item active">
+                <h3>Студентам</h3>
+                <p>Изучайте новые предметы, взаимодействуйте с преподавателями и достигайте своих образовательных целей</p>
+            </div>
+                </div>
+
+            <div class="feature-1">
+                <div class="feature-item active">
+                <h3 >Преподавателям</h3>
+                <p>Делитесь своим опытом, создавайте интересные курсы и влияйте на будущее студентов</p>
+                </div>
+            </div>
+        </div>
+
+
+            <h6>Присоединяйтесь к нам прямо сейчас и начните свой путь к новым знаниям!</h6>
+
+{% endblock %}

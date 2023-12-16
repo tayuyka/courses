@@ -1,0 +1,15 @@
+<!-- templates/add_student.html -->
+
+{% extends 'main/base.html' %}
+
+{% block title %}Добавление студента{% endblock %}
+
+{% block content %}
+
+<h1>Добавить студента</h1>
+<form method="post" action="{% url 'add_student' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit"  class="func-btn">Добавить студента</button>
+</form>
+{% endblock %}

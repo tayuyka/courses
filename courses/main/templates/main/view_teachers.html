@@ -1,0 +1,32 @@
+<!-- templates/main/view_teachers.html -->
+
+
+{% extends 'main/base.html' %}
+
+{% block title %}Просмотр преподавателей{% endblock %}
+
+{% block content %}
+   <h1>Преподаватели</h1>
+
+{% for teacher in teachers %}
+        <div class="student-info">
+        ФИО: {{ teacher.full_name }}<br>
+        Опыт: {{ teacher.experience }} лет<br>
+        Курс: {{ teacher.course }}<br>
+
+        <div class="func-btns">
+            <a href="{% url 'teacher_info' teacher.id %}" class="func-btn-edit" ><i class="gg-eye-alt"></i></a>
+
+        </div>
+
+    </div>
+<div class="centered-bar"></div>
+{% endfor %}
+
+
+
+<a href="{% url 'add_teacher' %}" class="func-btn-edit" >Добавить преподавателя</a>
+
+
+
+{% endblock %}

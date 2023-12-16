@@ -1,0 +1,15 @@
+<!-- templates/main/delete_teacher.html -->
+
+{% extends 'main/base.html' %}
+
+{% block title %}Удаление учителя{% endblock %}
+
+{% block content %}
+
+<h1>Вы уверены, что хотите удалить учителя "{{ teacher.full_name }}"?</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="func-btn">Да, удалить</button>
+</form>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'main/base.html' %}
+
+{% block title %}{{ teacher.full_name }}{% endblock %}
+
+{% block content %}
+<div class="card-content">
+
+<div class="info-section">
+
+ <h1>{{ teacher.full_name }}</h1>
+
+    <br>Дисциплина: {{ teacher.course }} </br>
+    <br>Опыт: {{ teacher.experience }} лет </br>
+
+    <h2>Группы:</h2>
+    <ul>
+        {% for group in groups %}
+            <li>
+                {{ group.group_name }} : {{ group.student_set.count }} cтудент(ов)
+                <br></br>
+            </li>
+        {% endfor %}
+    </ul>
+    <h3>Годовой оклад</h3>
+    <p class="tot-cost"> {{ teacher.calculate_salary }} ₽</p>
+    </div>
+            <div class="func-btns">
+
+    <a href="{% url 'edit_teacher' teacher.id %}" class="func-btn"  >Изменить</a>
+            <a href="{% url 'delete_teacher' teacher.id %}" class="func-btn" >Удалить</a>
+            </div>
+</div>
+{% endblock %}

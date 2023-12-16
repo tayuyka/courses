@@ -1,0 +1,27 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Просмотр студентов{% endblock %}
+
+{% block content %}
+<div class="card-content">
+
+<div class="info-section">
+ <h1>{{ course.course_name }}</h1>
+
+    <br>Дисциплина: {{ course.course_type.course_type }} </br>
+    <br>{{ course.duration }} часов </br>
+
+    <h2>Группы:</h2>
+    <ul>
+        {% for group in groups %}
+            <li>
+                {{ group.group_name }} : {{ group.student_set.count }} cтудентов
+                <br></br>
+            </li>
+        {% endfor %}
+    </ul>
+    <h3>Доходность</h3>
+    <p class="tot-cost"> {{ course.calculate_profit }} ₽</p>
+    </div>
+    </div>
+{% endblock %}

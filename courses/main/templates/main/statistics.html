@@ -1,0 +1,23 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Статистика{% endblock %}
+
+{% block content %}
+<div class="card-content">
+<div class="info-section">
+  <h1>Статистика</h1>
+    <h2>Самый прибыльный курс</h2>
+    <p>{{ most_profitable_course.course_name }} - {{ profit }} ₽</p>
+
+    <h2>Самый популярный курс</h2>
+   <p>{{ most_popular_course.course_name }} - {{ total_students }} студент(ов)</p>
+
+
+    <h2>Самый ценный работник</h2>
+    <p>{{ most_expensive_teacher.full_name }} - {{ salary }} ₽</p>
+
+    <h2>Самый ценный студент</h2>
+    <p>{{ most_profitable_student.full_name }} - {{ total_cost }} ₽</p>
+    </div>
+  </div>
+{% endblock %}

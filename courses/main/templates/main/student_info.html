@@ -1,0 +1,35 @@
+{% extends 'main/base.html' %}
+
+{% block title %}{{ student.full_name }}{% endblock %}
+
+{% block content %}
+<div class="card-content">
+
+<div class="info-section">
+
+<h1>{{ student.full_name }}</h1>
+
+    <h2>Группы:</h2>
+    <ul>
+        {% for group in groups %}
+            <li>
+                {{ group.group_name }} <br>
+                <div class="grop-inf">
+                Преподаватель: {{ group.teacher.full_name }}<br>
+                Курс: {{ group.course.course_name }}<br>
+                Стоимость: {{ group.calculate_cost }} ₽
+                </div>
+            </li>
+        <br></br>
+        {% endfor %}
+    </ul>
+
+    <h3>К оплате</h3>
+    <p class="tot-cost">{{ student.calculate_total_cost }} ₽</p>
+</div>
+<div class="func-btns">
+            <a href="{% url 'edit_student' student.id %}" class="func-btn" >Изменить</a>
+            <a href="{% url 'delete_student' student.id %}" class="func-btn" >Удалить</a>
+    </div>
+    </div>
+{% endblock %}

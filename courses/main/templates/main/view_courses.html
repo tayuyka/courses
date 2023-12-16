@@ -1,0 +1,31 @@
+<!-- templates/main/view_courses.html -->
+
+{% extends 'main/base.html' %}
+
+{% block title %}Просмотр курсов{% endblock %}
+
+{% block content %}
+   <h1>Курсы</h1>
+
+
+
+{% for course in courses %}
+<div class="student-info">
+    Название: {{ course.course_name }}<br>
+    Длительность: {{ course.duration }} часов<br>
+    Тип курса: {{ course.course_type.course_type }}<br>
+
+    <div class="func-btns">
+            <a href="{% url 'course_info' course.id %}" class="func-btn-edit" >Инфо</a>
+
+
+    </div>
+
+
+</div>
+<div class="centered-bar"></div>
+
+
+{% endfor %}
+
+{% endblock %}

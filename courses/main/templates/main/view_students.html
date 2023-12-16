@@ -1,0 +1,49 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Просмотр студентов{% endblock %}
+
+{% block content %}
+   <h1>Студенты</h1>
+
+<form method="GET" action="{% url 'view_students' %}" class="search">
+    <input type="text" name="q" value="{{ search_query }}" placeholder="Поиск по ФИО" class="filter">
+    <button type="submit" class="func-btn-edit">Искать</button>
+</form>
+
+{% for student in students %}
+<div class="centered-bar"></div>
+    <div class="student-info">
+        ФИО: {{ student.full_name|escape }}<br>
+        Группы: {{ student.group.all|join:"; "|escape }}<br>
+
+        <div class="func-btns-edit">
+            <a href="{% url 'student_info' student.id %}" class="func-btn-edit" >Инфо</a>
+        </div>
+    </div>
+
+
+{% endfor %}
+
+<div class="pagination">
+    <span class="step-links">
+        {% if students.has_previous %}
+            <a href="?page=1"><box-icon name='chevrons-left' type='solid' color='#ffffff' ></box-icon></a>
+            <a href="?page={{ students.previous_page_number }}"><box-icon name='chevron-right' rotate='180' color='#ffffff' ></box-icon></a>
+        {% endif %}
+
+        <span class="current">
+            {{ students.number }} / {{ students.paginator.num_pages }}
+        </span>
+
+        {% if students.has_next %}
+            <a href="?page={{ students.next_page_number }}"><box-icon name='chevron-right' color='#ffffff' ></box-icon></a>
+            <a href="?page={{ students.paginator.num_pages }}"><box-icon name='chevrons-left' type='solid' rotate='180' color='#ffffff' ></box-icon></a>
+        {% endif %}
+    </span>
+</div>
+
+<div style="clear:both;"></div> <!-- Добавьте это для очистки float и размещения пагинации в нижнем правом углу -->
+
+<a href="{% url 'add_student' %}" class="func-btn-edit">Добавить студента</a>
+
+{% endblock %}

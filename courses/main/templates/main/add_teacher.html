@@ -1,0 +1,15 @@
+<!-- templates/add_teacher.html -->
+
+{% extends 'main/base.html' %}
+
+{% block title %}Добавление учителя{% endblock %}
+
+{% block content %}
+
+<h1>Добавить учителя</h1>
+<form method="post" action="{% url 'add_teacher' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit"  class="func-btn">Добавить преподавателя</button>
+</form>
+{% endblock %}
